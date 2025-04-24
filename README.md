@@ -104,5 +104,5 @@ Esse projeto consiste em uma calculadora de Metobolica Basal
 
 </body>
 </html>
-git init
+
 
