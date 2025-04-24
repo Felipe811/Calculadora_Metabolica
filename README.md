@@ -75,38 +75,7 @@ Esse projeto consiste em uma calculadora de Metobolica Basal
   </div>
 
   <script>
-    function calcularTMB() {
-      const sexo = document.getElementById("sexo").value;
-      const peso = parseFloat(document.getElementById("peso").value);
-      const altura = parseFloat(document.getElementById("altura").value);
-      const idade = parseInt(document.getElementById("idade").value);
-      const resultadoDiv = document.getElementById("resultado");
-
-      // Validação simples
-      if (isNaN(peso) || isNaN(altura) || isNaN(idade)) {
-        resultadoDiv.innerHTML = "❌ Por favor, preencha todos os campos corretamente.";
-        return;
-      }
-
-      let tmb = 0;
-
-      if (sexo === "masculino") {
-        tmb = 88.36 + (13.4 * peso) + (4.8 * altura) - (5.7 * idade);
-      } else {
-        tmb = 447.6 + (9.2 * peso) + (3.1 * altura) - (4.3 * idade);
-      }
-
-      let mensagem = `Sua TMB é aproximadamente <strong>${tmb.toFixed(2)} kcal/dia</strong>.<br>`;
-
-      if (tmb < 1100) {
-        mensagem += "⚠️ TMB muito baixa: pode indicar baixa massa muscular ou dietas restritivas demais.";
-      } else if (tmb > 2500) {
-        mensagem += "⚠️ TMB muito alta: pode ser normal em atletas, mas também pode indicar alterações hormonais.";
-      } else {
-        mensagem += "✅ TMB dentro da faixa esperada.";
-      }
-
-      resultadoDiv.innerHTML = mensagem;
+    
     }
   </script>
 
