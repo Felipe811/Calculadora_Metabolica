@@ -1,2 +1,108 @@
 # Calculadora_Metabolica
 Esse projeto consiste em uma calculadora de Metobolica Basal
+
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de TMB</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .resultado {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Calculadora de TMB</h2>
+        <label for="sexo">Sexo:</label>
+        <select id="sexo">
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+        </select>
+
+        <label for="peso">Peso (kg):</label>
+        <input type="number" id="peso" required>
+
+        <label for="altura">Altura (cm):</label>
+        <input type="number" id="altura" required>
+
+        <label for="idade">Idade (anos):</label>
+        <input type="number" id="idade" required>
+
+        <button onclick="calcularTMB()">Calcular TMB</button>
+
+        <div class="resultado" id="resultado"></div>
+    </div>
+
+    <script>
+        function calcularTMB() {
+            const sexo = document.getElementById("sexo").value;
+            const peso = parseFloat(document.getElementById("peso").value);
+            const altura = parseFloat(document.getElementById("altura").value);
+            const idade = parseInt(document.getElementById("idade").value);
+
+            let tmb = 0;
+
+            if (sexo === "masculino") {
+                tmb = 88.36 + (13.4 * peso) + (4.8 * altura) - (5.7 * idade);
+            } else {
+                tmb = 447.6 + (9.2 * peso) + (3.1 * altura) - (4.3 * idade);
+            }
+
+            let mensagem = `Sua TMB é aproximadamente <strong>${tmb.toFixed(2)} kcal/dia</strong>.<br>`;
+
+            if (tmb < 1100) {
+                mensagem += "⚠️ TMB muito baixa: pode indicar baixa massa muscular ou dietas restritivas demais.";
+            } else if (tmb > 2500) {
+                mensagem += "⚠️ TMB muito alta: pode ser normal em atletas, mas também pode indicar alterações hormonais.";
+            } else {
+                mensagem += "✅ TMB dentro da faixa esperada.";
+            }
+
+            document.getElementById("resultado").innerHTML = mensagem;
+        }
+    </script>
+
+</body>
+</html>
+git init
+
